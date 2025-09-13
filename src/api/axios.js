@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://ecommerce-ladv.onrender.com/",
+  baseURL: "https://ecommerce-ladv.onrender.com/api",
 });
 
 // Attach token from localStorage (or another source) to every request
