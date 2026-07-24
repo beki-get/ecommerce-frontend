@@ -1,70 +1,174 @@
-# Getting Started with Create React App
+# Ecommerce Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive e-commerce frontend application built with React. This project provides a complete user interface for browsing products, managing shopping carts, and processing payments.
 
-## Available Scripts
+## 🎯 Features
 
-In the project directory, you can run:
+- **Product Browsing**: Browse and filter products with an intuitive interface
+- **Shopping Cart**: Add/remove items and manage quantities
+- **Payment Integration**: Secure payment processing with Stripe
+- **Responsive Design**: Mobile-friendly UI with Bootstrap and Tailwind CSS
+- **Pagination**: Efficient product list navigation with React Paginate
+- **Data Visualization**: Interactive charts with Recharts
+- **Icon Library**: Rich set of UI icons from React Icons and Hero Icons
+- **Routing**: Client-side navigation with React Router v7
+- **State Management**: Modern state management with Immer
 
-### `npm start`
+## 🚀 Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Core Framework
+- **React** 19.1.1 - UI library
+- **React Router** 7.8.0 - Client-side routing
+- **React DOM** 19.1.1 - DOM rendering
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Styling
+- **Tailwind CSS** 3.4.17 - Utility-first CSS framework
+- **Bootstrap** 5.3.7 - CSS framework components
+- **PostCSS** 8.5.6 - CSS transformations
 
-### `npm test`
+### UI Components & Icons
+- **React Bootstrap** 2.10.10 - Bootstrap components for React
+- **React Icons** 5.5.0 - Popular icon libraries
+- **Hero Icons** 2.2.0 - Beautiful hand-crafted SVG icons
+- **Headless UI** 2.2.7 - Unstyled accessible components
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Data Visualization
+- **Recharts** 3.1.2 - React charting library
 
-### `npm run build`
+### Payments
+- **Stripe JS** 7.9.0 - Stripe payment integration
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### HTTP Client
+- **Axios** 1.11.0 - Promise-based HTTP client
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Development Tools
+- **React Scripts** 5.0.1 - CRA build tools
+- **TypeScript** 4.9.5 - Static type checking
+- **ESLint** 8.57.1 - Code linting
+- **Jest** 27.5.1 - Testing framework
+- **Webpack** 5.101.2 - Module bundler
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Build Stats
+- **JavaScript**: 78,195 bytes
+- **HTML**: 1,725 bytes
+- **CSS**: 1,368 bytes
 
-### `npm run eject`
+## 📦 Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository:
+```bash
+git clone https://github.com/beki-get/ecommerce-frontend.git
+cd ecommerce-frontend
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-## Learn More
+3. Start the development server:
+```bash
+npm start
+# or
+yarn dev
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The application will be available at `http://localhost:3000`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🛠️ Available Scripts
 
-### Code Splitting
+- **`npm start` or `npm run dev`** - Runs the app in development mode
+- **`npm test`** - Runs the test suite with Jest
+- **`npm run build`** - Builds the app for production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📁 Project Structure
 
-### Analyzing the Bundle Size
+```
+ecommerce-frontend/
+├── public/           # Static files
+├── src/              # Source code
+│   ├── components/   # Reusable React components
+│   ├── pages/        # Page components
+│   ├── styles/       # CSS/SCSS files
+│   └── App.js        # Main application component
+├── package.json      # Dependencies and scripts
+└── README.md         # This file
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🔧 Configuration
 
-### Making a Progressive Web App
+### Tailwind CSS
+Tailwind CSS is configured with custom plugins and extensions:
+- Forms plugin for enhanced form styling
+- Aspect ratio plugin for responsive media
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Webpack
+The project uses Create React App's webpack configuration which includes:
+- Hot module reloading for development
+- Optimized bundle splitting for production
+- CSS and asset processing
 
-### Advanced Configuration
+## 💳 Stripe Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Payment processing is handled through Stripe. Configure your Stripe keys:
+1. Add your Stripe publishable key to your environment variables
+2. Stripe JS library is included and ready to use
 
-### Deployment
+## 🧪 Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Run tests using Jest:
+```bash
+npm test
+```
 
-### `npm run build` fails to minify
+Test environment is configured to use jsdom for DOM testing.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📱 Browser Support
+
+The application supports the following browsers:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+Production build targets:
+- >0.2% market share
+- Not dead browsers
+- Not Opera Mini
+
+## 🚀 Deployment
+
+Build the production bundle:
+```bash
+npm run build
+```
+
+This creates an optimized build in the `build/` directory that's ready for deployment.
+
+## 📄 License
+
+ISC
+
+## 👤 Author
+
+beki-get
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## 📞 Support
+
+For issues or questions, please create an issue in the repository.
+
+---
+
+**Built with ❤️ using React**
