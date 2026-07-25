@@ -71,7 +71,7 @@ const HomePage = () => {
       {/* Category Highlights */}
       <h2 className="text-2xl font-bold mb-6">Shop by Category</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-        {["Electronics", "Fashion", "Books", "Home"].map((cat) => (
+        {["Smartphones", "Laptops", "Audio", "Televisions"].map((cat) => (
           <div
             key={cat}
             className="h-32 bg-gray-100 flex items-center justify-center rounded-lg cursor-pointer hover:shadow-lg transition"
