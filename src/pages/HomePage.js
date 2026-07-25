@@ -100,10 +100,10 @@ const HomePage = () => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="All">All Categories</option>
-          <option value="Electronics">Electronics</option>
-          <option value="Fashion">Fashion</option>
-          <option value="Books">Books</option>
-          <option value="Home">Home</option>
+          <option value="Smartphones">Smartphones</option>
+          <option value="Laptops">Laptops</option>
+          <option value="Televisions">Televisions</option>
+          <option value="Audio">Audio</option>
         </select>
       </div>
 
