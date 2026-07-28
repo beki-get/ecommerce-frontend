@@ -41,75 +41,57 @@ const CheckoutPage = () => {
   };
 
   const handlePlaceOrder = async () => {
-    if (!validateForm()) {
-      return;
-    }
+  if (!validateForm()) return;
 
-    setLoading(true);
-    setError("");
+  setLoading(true);
+  setError("");
 
-    try {
-      // Prepare cart items with proper product ID extraction
-      const items = cartItems.map((item) => {
-        let productId;
-        if (item.productId && typeof item.productId === "object") {
-          productId = item.productId._id;
-        } else if (item.productId && typeof item.productId === "string") {
-          productId = item.productId;
-        } else {
-          productId = item._id;
-        }
+  try {
+    const items = cartItems.map((item) => ({
+      productId: item.productId?._id || item.productId || item._id,
+      quantity: item.quantity,
+    }));
 
-        return {
-          productId,
-          quantity: item.quantity,
-        };
-      });
+    // 1. Create the order in the database
+    const { data: orderData } = await axios.post(
+      "https://ecommerce-ladv.onrender.com/api/checkout",
+      { address, paymentMethod, items },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
 
-      // Place order request
-      const { data } = await axios.post(
-        "https://ecommerce-ladv.onrender.com/api/checkout",
-        {
-          address,
-          paymentMethod,
-          items,
-        },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+    const createdOrder = orderData.order || orderData;
 
-      // ONLINE PAYMENT FLOW (CHAPA)
-     if (paymentMethod === "chapa") {
-      const { data: paymentResponse } = await axios.post(
-        "https://ecommerce-ladv.onrender.com/api/payment/initialize",
+    // 2. If online payment selected, initialize Chapa payment
+    if (paymentMethod === "chapa") {
+      const { data: paymentData } = await axios.post(
+        "https://ecommerce-ladv.onrender.com/api/payment/initialize", // Make sure this matches your Express route for initializeChapaPayment
         { orderId: createdOrder._id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      if (paymentResponse.checkout_url) {
-        window.location.href = paymentResponse.checkout_url;
+      if (paymentData.checkout_url) {
+        window.location.href = paymentData.checkout_url;
         return;
       }
     }
 
-      // CASH ON DELIVERY (COD) FLOW
-      clearCart();
-      if (addOrder) {
-        addOrder(data.order || data);
-      }
+    // 3. Cash on Delivery fallback flow
+    clearCart();
+    if (addOrder) addOrder(createdOrder);
 
-      alert("Order placed successfully!");
-      navigate("/orders");
-    } catch (err) {
-      const errorMessage =
-        err.response?.data?.message ||
-        err.message ||
-        "Failed to place order. Please try again.";
-      setError(errorMessage);
-      console.error("Checkout Error:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+    alert("Order placed successfully!");
+    navigate("/orders");
+  } catch (err) {
+    const errorMessage =
+      err.response?.data?.message ||
+      err.message ||
+      "Failed to place order. Please try again.";
+    setError(errorMessage);
+    console.error("Checkout Error:", err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   if (!user || !token) {
     return null; // Will redirect via useEffect
