@@ -49,16 +49,63 @@ const HomePage = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 mt-8">
-      {/* Hero Banner */}
-      <div className="relative w-full h-64 md:h-96 bg-gradient-to-r from-blue-500 to-indigo-600 text-white flex items-center justify-center rounded-lg mb-12">
-        <div className="text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2">Big Sale This Week!</h1>
-          <p className="text-lg md:text-xl mb-4">Up to 50% off on selected items</p>
-          <button className="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
-            Shop Now
-          </button>
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+  {/* Main Hero Card */}
+  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-900 text-white shadow-xl border border-slate-800">
+    
+    {/* Subtle Tech-style Background Glows */}
+    <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl pointer-events-none" />
+    <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-indigo-500/15 blur-3xl pointer-events-none" />
+
+    <div className="relative z-10 px-6 py-12 md:py-16 lg:py-20 max-w-3xl mx-auto text-center">
+      
+      {/* Electronics Promo Tag */}
+      <span className="inline-block bg-blue-500/20 backdrop-blur-md text-blue-300 text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-blue-400/30 uppercase tracking-wider">
+        ⚡ Next-Gen Tech Deals
+      </span>
+
+      {/* Main Electronics Headline */}
+      <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight mb-4 leading-tight text-white">
+        Upgrade Your Tech Setup
+      </h1>
+
+      {/* Subtitle / Value Proposition */}
+      <p className="text-base sm:text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto font-normal">
+        Discover top-quality smartphones, laptops, audio gear, and accessories. Save up to <strong className="text-blue-400 font-bold">50% off</strong> on selected items this week.
+      </p>
+
+      {/* Call To Action Buttons */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a 
+          href="#products" 
+          className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 transform active:scale-95 text-center"
+        >
+          Shop Tech Deals
+        </a>
+        <a 
+          href="#categories" 
+          className="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 font-semibold px-8 py-3.5 rounded-xl border border-slate-700 transition-all duration-200 text-center"
+        >
+          Browse Categories
+        </a>
       </div>
+
+    </div>
+  </div>
+
+  {/* Electronics Trust Badges */}
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 text-slate-700 text-center text-sm font-medium">
+    <div className="p-3 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center gap-2">
+      <span className="text-blue-600 font-bold">🚚</span> Fast & Safe Delivery
+    </div>
+    <div className="p-3 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center gap-2">
+      <span className="text-blue-600 font-bold">💵</span> Cash on Delivery
+    </div>
+    <div className="p-3 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center gap-2">
+      <span className="text-blue-600 font-bold">🛡️</span> Verified Quality & Support
+    </div>
+  </div>
+</div>
 
       {/* Featured Products */}
       <h2 className="text-2xl font-bold mb-6">Featured Products</h2>
