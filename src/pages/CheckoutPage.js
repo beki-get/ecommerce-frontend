@@ -51,7 +51,6 @@ const CheckoutPage = () => {
     try {
       // Prepare cart items with proper product ID extraction
       const items = cartItems.map((item) => {
-        // Handle different product data structures
         let productId;
         if (item.productId && typeof item.productId === "object") {
           productId = item.productId._id;
@@ -67,7 +66,7 @@ const CheckoutPage = () => {
         };
       });
 
-      // Place order
+      // Place order request
       const { data } = await axios.post(
         "https://ecommerce-ladv.onrender.com/api/checkout",
         {
@@ -78,13 +77,19 @@ const CheckoutPage = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      // Success - clear cart and add order
+      // ONLINE PAYMENT FLOW (CHAPA)
+      if (paymentMethod === "chapa" && data.checkout_url) {
+        // Redirect user directly to Chapa hosted payment page
+        window.location.href = data.checkout_url;
+        return;
+      }
+
+      // CASH ON DELIVERY (COD) FLOW
       clearCart();
       if (addOrder) {
         addOrder(data.order || data);
       }
 
-      // Show success message
       alert("Order placed successfully!");
       navigate("/orders");
     } catch (err) {
@@ -173,11 +178,11 @@ const CheckoutPage = () => {
         <label className="flex items-center space-x-2 cursor-pointer">
           <input
             type="radio"
-            value="card"
-            checked={paymentMethod === "card"}
+            value="chapa"
+            checked={paymentMethod === "chapa"}
             onChange={(e) => setPaymentMethod(e.target.value)}
           />
-          <span>Card Payment (Test)</span>
+          <span>Pay Online (Telebirr, CBE Birr, Cards via Chapa)</span>
         </label>
       </div>
 
@@ -221,7 +226,11 @@ const CheckoutPage = () => {
           disabled={loading}
           className="flex-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:bg-gray-400 transition"
         >
-          {loading ? "Placing Order..." : "Place Order"}
+          {loading 
+            ? "Processing..." 
+            : paymentMethod === "chapa" 
+            ? "Proceed to Pay with Chapa" 
+            : "Place Order"}
         </button>
       </div>
     </div>
