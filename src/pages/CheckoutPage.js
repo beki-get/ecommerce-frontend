@@ -78,11 +78,18 @@ const CheckoutPage = () => {
       );
 
       // ONLINE PAYMENT FLOW (CHAPA)
-      if (paymentMethod === "chapa" && data.checkout_url) {
-        // Redirect user directly to Chapa hosted payment page
-        window.location.href = data.checkout_url;
+     if (paymentMethod === "chapa") {
+      const { data: paymentResponse } = await axios.post(
+        "https://ecommerce-ladv.onrender.com/api/payment/initialize",
+        { orderId: createdOrder._id },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      if (paymentResponse.checkout_url) {
+        window.location.href = paymentResponse.checkout_url;
         return;
       }
+    }
 
       // CASH ON DELIVERY (COD) FLOW
       clearCart();
